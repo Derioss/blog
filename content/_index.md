@@ -1,11 +1,11 @@
 ---
 title: "Home"
 description: ""
-images: ["undraw_freelancer_b0my.svg"]
+images: ["19691.svg"]
 draft: false
 menu: main
 weight: 1
 ---
 
 
-# Un blog sur le devops
+# Un blog sur le devops (work in progress)

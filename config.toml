@@ -8,6 +8,18 @@ paginate = 5
 enableRobotsTXT = true
 publishDir = "Derioss.github.io"
 
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "solarized-dark"
+    tabWidth = 4
+    
 [params]
     description = "Ce blog "
     favicon = "favicon.ico"
@@ -15,7 +27,7 @@ publishDir = "Derioss.github.io"
 [params.hero]
     textColor = "" # Empty for default color
 [params.cta] # Call To Action 
-    show = true
+    show = false
     cta = "Contact"
     link = "contact" # Relative URL
 
@@ -48,7 +60,7 @@ publishDir = "Derioss.github.io"
     dateFormat = "Monday, Jan, 2006"
 
 [params.contact] # Contact info
-    email = "maury.frederic@gmail.com"
+    email = ""
 
 [params.social]
     twitter = ""
