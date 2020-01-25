@@ -8,4 +8,4 @@ weight: 1
 ---
 
 
-# Un blog sur le devops (work in progress)
+# Un blog sur le devops

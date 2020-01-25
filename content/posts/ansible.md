@@ -1,16 +1,15 @@
 ---
-title: "basic ansible (work in progress)"
+title: "basic ansible"
 description: "Première prise en main"
 date: 2020-01-24T22:21:42+01:00
 publishDate: 2020-01-19T22:21:42+01:00
 author: "Derios"
 images: []
 draft: false
-tags: ["devops", "automatisation", "deploiement", "ansible"]
+tags: ["devops", "automatisation", "déploiement", "ansible"]
 ---
 
-![logo ansible](images/ansible.png)
-![](../images/ansible.png)
+![](/posts/images/ansible.png)
 
 Les basiques pour monter un projet sous ansible, avec un ensemble de bonne pratique.
 
@@ -21,7 +20,7 @@ J'aborderais la version non-graphique.
 Ansible  est un des outils d'automation phare, simple de prise en main et puissant.
 Il existe sous plusieurs formes :
 - la version console  [documentation officielle](https://docs.ansible.com/ansible/latest/index.html)
-- La version graphique entreprise [site officel](https://www.ansible.com/products/tower)
+- La version graphique entreprise [site officiel](https://www.ansible.com/products/tower)
 - La version graphique en community edition [github officiel](https://github.com/ansible/awx) uniquement sur docker
 
 La version graphique est principalement apporte une interface de monitoring de vos jobs qui peuvent être 'schedule', et surtout des profils avec des droits attribuer à ses profils.
@@ -46,7 +45,7 @@ dnf install ansible # fedora
 
 ### Création de notre premier playbook
 
-note: l'hote est une machine linux
+note: l'hôte est une machine linux.
 
 *A mettre dans le mm répertoire* host, playbook.yml
 
@@ -58,7 +57,7 @@ hostname1|ip ansible_user=test
 hostname2|ip
 
 ```
-Nous allons afficher un hello world sur l'hote, capturer la stdout afin de l'afficher par ansible
+Nous allons afficher un hello world sur l'hôte, capturer la stdout afin de l'afficher par ansible
 
 ```yaml
 - hosts: nomdugroupe
@@ -80,5 +79,5 @@ C'est ici que les choses deviennent vraiment intéressante
 
 ![](../images/structure.jpg)
 
-
+(work in progress)
 
