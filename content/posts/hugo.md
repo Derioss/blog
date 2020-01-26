@@ -1,6 +1,6 @@
 ---
 title: "Déploiement d'un blog avec Hugo"
-description: ""
+description: "Je décris le montage de mon blog"
 date: 2020-01-25T22:21:42+01:00
 publishDate: 2020-01-25T22:21:42+01:00
 author: "Derios"

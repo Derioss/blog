@@ -1,7 +1,7 @@
 ---
 title: "Les variables dans ansible"
-description: "Première prise en main"
-date: 2026-01-24T22:21:42+01:00
+description: "Première prise en main d'ansible"
+date: 2020-01-19T22:21:42+01:00
 publishDate: 2020-01-19T22:21:42+01:00
 author: "Derios"
 images: []

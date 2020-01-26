@@ -1,7 +1,7 @@
 ---
 title: "basic ansible"
-description: "Première prise en main"
-date: 2020-01-24T22:21:42+01:00
+description: "Première prise en main d'ansible"
+date: 2020-01-19T22:21:42+01:00
 publishDate: 2020-01-19T22:21:42+01:00
 author: "Derios"
 images: []
@@ -11,7 +11,7 @@ tags: ["devops", "automatisation", "déploiement", "ansible"]
 
 ![](/posts/images/ansible.png)
 
-Les basiques pour monter un projet sous ansible.
+Une courte introduction à ansible.
 
 J'aborderais la version non-graphique.
 
@@ -23,11 +23,13 @@ Il existe sous plusieurs formes :
 - La version graphique entreprise [site officiel](https://www.ansible.com/products/tower)
 - La version graphique en community edition [github officiel](https://github.com/ansible/awx) uniquement sur docker
 
-La version graphique est principalement apporte une interface de monitoring de vos jobs qui peuvent être 'schedule', et surtout des profils avec des droits attribuer à ses profils.
+La version graphique apporte une interface de monitoring des jobs qui peuvent être 'schedule', et surtout des profils utilisateurs.
 
-Ce qui peut répondre à des besoins de sécurités, de plus, il y a le support de RedHat..
+Ce qui peut répondre à des besoins de sécurité, de travail en équipe avec le support de RedHat.
 
-L'intégration par exemple aux pipelines se fera par le biais d'API, elle n'apporte pas par-contre, à l'heure ou j'écris cette article, de possibilités d'automatisation plus poussées.
+Il existe également une API fonctionnelle pour vos pipelines.
+
+Elle n'apporte pas par-contre, à l'heure ou j'écris cette article, de possibilités d'automatisation plus poussées.
 
 Pour avoir utilisé les deux, la vitesse de développement des projets est en faveur de la version 'classique'.
 
@@ -45,19 +47,23 @@ dnf install ansible # fedora
 
 ### Création de notre premier playbook
 
-note: l'hôte est une machine linux, un centos7.
+L'hôte est une machine linux, un centos7.
 
-*A mettre dans le mm répertoire* host, playbook.yml
+On va commencer par créer deux fichiers :
 
-On commence par créer le fichier `host`, contenant un ou plusieurs hôtes qui contiendra
-On peut mettre également des vars à ce niveau comme `ansible_user`
+- hosts contenant un ou plusieurs groupes, qui contient eux-même un ou plusieurs hôtes.
+
+On peut mettre également des vars à ce niveau comme `ansible_user`, qui est l'identifiant de connection ssh de l'hôte.
 ```INI
 [nomdugroupe]
 hostname1|ip ansible_user=test
 hostname2|ip
 
 ```
-Nous allons afficher un world sur l'hôte, capturer la stdout afin de l'afficher par ansible
+
+- playbook.yml, qui contiendra les tâches d'automatisation.
+
+Nous allons afficher un world sur l'hôte en capturant le stdout dans une variable afin de l'afficher dans ansible.
 
 ```yaml
 - hosts: nomdugroupe
