@@ -1,10 +1,10 @@
 ---
 title: "Home"
 description: ""
-images: ["19691.svg"]
+images: []
 draft: false
 menu: main
 weight: 1
 ---
 
-# Un blog sur le devops
+# Le blog technique d'un devops

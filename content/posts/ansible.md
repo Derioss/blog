@@ -11,7 +11,7 @@ tags: ["devops", "automatisation", "déploiement", "ansible"]
 
 ![](/posts/images/ansible.png)
 
-Les basiques pour monter un projet sous ansible, avec un ensemble de bonne pratique.
+Les basiques pour monter un projet sous ansible.
 
 J'aborderais la version non-graphique.
 
@@ -45,7 +45,7 @@ dnf install ansible # fedora
 
 ### Création de notre premier playbook
 
-note: l'hôte est une machine linux.
+note: l'hôte est une machine linux, un centos7.
 
 *A mettre dans le mm répertoire* host, playbook.yml
 
@@ -57,7 +57,7 @@ hostname1|ip ansible_user=test
 hostname2|ip
 
 ```
-Nous allons afficher un hello world sur l'hôte, capturer la stdout afin de l'afficher par ansible
+Nous allons afficher un world sur l'hôte, capturer la stdout afin de l'afficher par ansible
 
 ```yaml
 - hosts: nomdugroupe
@@ -68,16 +68,23 @@ Nous allons afficher un hello world sur l'hôte, capturer la stdout afin de l'af
 
     - name: Display stdout
       debug:
-        msg: {{ stdout }}
+        msg: "{{ stdout }}"
 ```
 
-# Notre premier projet
+On a donc l'hôte qui est renseigné et les commandes a effectué, ansible réalisant une connection de type ssh, il nous manquera soit un mot de passe, soit une clé.
+Pour le password, il y a différente manière de lui fournir :
 
-C'est ici que les choses deviennent vraiment intéressante
+- Avec une variable `ansible_ssh_pass=valeur`, on peut lui passer en ligne de commande, ou dans les différents fichier de notre projet (j'y reviendrai plus tard)
 
-## Structure d'un projet
+```bash
+--extra-vars "ansible_ssh_pass=valeur"
+# on peut également lui demandé en prompt
+--ask-pass
+```
 
-![](../images/structure.jpg)
+```bash
+ansible-playbook -i hosts playbook.yml --ask-pass
+```
 
-(work in progress)
-
+Ce qui donne le résultat :
+![](/posts/images/premier_playbook_resultat.PNG)
