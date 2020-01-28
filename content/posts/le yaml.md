@@ -5,7 +5,7 @@ date: 2020-01-28T20:21:20+01:00
 publishDate: 2020-01-28T20:21:20+01:00
 author: "Derios"
 images: []
-draft: true
+draft: false
 tags: ["devops", "automatisation", "déploiement", "ansible", "sécurité","docker","gitlab-ci"]
 ---
 
@@ -19,10 +19,21 @@ Quand on fait du devops, on manipule du YAML absolument PARTOUT (docker,elastics
 
 # Rentrons dans le sujet.
 
-## Une valeur
+Le YAML permet nombre de chose .. la [bible](https://yaml.org/spec/1.2/spec.html).
+
+Je ne vais faire au final que le survoler.
+
+Mais pour être franc à moins de besoin spécifique, je n'ai pas eu le besoin au jour le jour de vraiment pousser jusqu'à la maîtrise.
+
+## Les différent type de valeur
 
 ```YAML
-liste: 'un'
+sting: 'un'
+bolean: true
+bolean: false
+null: null
+int: 1
+date: 2002-12-14
 ```
 
 ## Une liste
@@ -37,20 +48,12 @@ autre_liste:
     - 3
 ```
 
-## Entiers
-
-```YAML
-canonique:      1.23015e+3
-exponentielle:  12.3015e+02
-sexagesimal:    20:30.15
-fixe:           1_230.15
-infini negatif: -.inf
-pas un nombre:  .NaN
-```
-
 ## Les ancres
+
 `*anchor` : set la valeur 
+
 `<<: *anchor` : permet d'extend
+
 ### Utilisation dans un pipeline gitlab
 
 Ex: dans une pipeline Gitlab (ce qui sert à faire des templates), le `.` sert à commenter un job pour qu'il ne s'execute pas.
@@ -70,7 +73,7 @@ Ex: dans une pipeline Gitlab (ce qui sert à faire des templates), le `.` sert �
       fi 
     -  if [ -n $TEST ]; then echo 'hello world'; fi
 
-&template_script :
+.template_script: &template_script
     - |
         if [ -n $TEST ]; then
         echo 'hello world'
@@ -101,3 +104,6 @@ job3:
       when: manual
 ```
 
+# Conclusion
+
+Un article court, mais qui met le pied à l'étrier pour réaliser pipeline, compose file sans trop de duplication de code !
