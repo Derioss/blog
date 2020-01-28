@@ -11,7 +11,7 @@ tags: ["devops", "automatisation", "déploiement", "ansible", "sécurité"]
 ![](/posts/images/ansible.png)
 Aujourd'hui je vais vous présenter une fonctionnalité d'ansible, **Ansible-vault**, un mini article donc mais qui à son importance.
 
-Cette Feature existe dans toutes les versions d'Ansible, je suis assez fan, c'est simple est efficace.
+Cette Feature existe dans toutes les versions d'Ansible, je suis assez fan, c'est simple et efficace.
 
 Elle permet de chiffrer un fichier complet ou une valeur rapidement afin de l'utiliser dans nos playbook grâce à un Masterkey.
 Il peut être contenu dans une variable (demande un ptit tricks) ou dans un fichier comme nous allons le voir plus loin ou même en prompt (mais c'est pas très automatisable un prompt...)
@@ -43,7 +43,7 @@ Un extrait de pipeline.
 build-vault:
   stage: vault
   script:
-   - echo $ANSIBLE_VAULT_PASSWORD > .vault_password.txt
+   - echo $ANSIBLE_VAULT_PASSWORD > .vault_pass.txt
   artifacts:
    paths:
    - .vault_password.txt
@@ -84,7 +84,7 @@ Le résultat avec comme masterkey.. masterkey
 
 On l'incorpore par exemple dans un fichier `vars.yml`.
 ```YAML
-path: /home/exploit
+path: '/home/exploit'
 var_vault: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           66656666663434663231373834613061313136636633323463643965393162656331373639616363
@@ -92,7 +92,7 @@ var_vault: !vault |
           34653633646536613434323734663135386561353865656137376636363866363663646139653738
           6564343531376361630a313437663462666437393731616463613839383061623638393366363230
           30653165656330303331326261396664623065363737643731613934303862663563
-another_vars: value
+another_vars: 'value'
 ```
 
 Ainsi à l'execution du playbook, on lui précise la masterkey comme on l'a abordé plus haut .. et c'est tout!
